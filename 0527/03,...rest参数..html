@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  *     -...rest参数调用的iterator接口,具有iterator接口的都能用
+  *
+  * */
+  //可以利用...rest存储我们不需要参数 或者将字符串转化为数组
+  {
+      let str = 'abcd';
+      let str_1 = [...str];
+      console.log(str_1);
+  }
+  //结构的赋值的时候用...rest接受剩余的值
+  {
+      let obj = {
+          name: "a",
+          age: 18,
+          c: 25
+      }
+      let arr=[1,2,3,4,5,6];
+      let [a,b,c,...arr_rest]=arr;
+      console.log(a);
+      console.log(b);
+      console.log(c);
+      console.log(arr_rest);
+
+      let {name, ...rest} = obj;
+      console.log(name);
+      console.log(rest);
+  }
+
+
+
+</script>
+</body>
+</html>

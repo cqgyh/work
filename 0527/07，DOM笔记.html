@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 
+		 // 标签的自定义属性需要通过setAttribute("属性"，"属性值")来修改  ----原生属性也可以这样设置和获取
+								getAAttribute("属性")来获取
+			标签的原生属性可以通过点语法或者["属性"]	语法来获取或者设置			
+		 // 原生JS中 通过JS修改标签的原生属性的时候是不显示在浏览器的标签内容中，修改xx.style.某某属性  可以直接再浏览器中F12看到
+		 //取消浏览器默认行为：dom0在回调事件中添加 return：false;
+							 dom2在回调事件中添加 event.preventDefault();
+		//onmouseover/onmouseout 	有事件切换行为 可以冒泡进行事件委派
+		//onmouseenter/onmouseleave 	没有事件切换行为
+		
+		//事件委派的时候会认为dt，dd，dl是同种元素  用底下那个条件可以完美判断target.children.length==0 判断是不是dl
+		if(target.nodeName="DD"&&target.previousElementSibling&&target.children.length==0){}
+		
+						 
+	 	 -->
+	</head>
+	<body>
+		
+	</body>
+</html>

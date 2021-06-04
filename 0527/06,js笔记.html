@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 
+		//赋值操作符的返回值是吧=右侧的值返回 
+					a=b=1    b=1   ===>返回1  ===>a=1
+		//  var只有在function（）{}的 大括号里面才认为是局部作用域  其他情况下全部默认为全局
+		//	在布尔上下文中，除 false、0、""（空字符串）、null、undefined 以及 NaN 外，其它所有值都为真值
+		
+		//typeof 			可以判断出'string','number','boolean','undefined','symbol'，function
+							但判断 typeof(null) 时值为 'object'; 判断array、object、null值均为 'object'
+							能识别出function
+						
+						
+		//instanceof 	    instanceof可以对不同的对象实例进行判断，判断方法是根据对象的原型链依次向下查询，
+							如果obj2的原型属性存在obj1的原型链上，（obj1 instanceof obj2）值为true。
+							用于判断null、array、object
+		//Object.prototype.toString.call()
+					常用于判断浏览器内置对象,对于所有基本的数据类型都能进行判断，即使是 null 和 undefined
+						
+						
+	    //Boolean    只有 "" 0 NaN   null  undefined 强制转换为Boolean的时候会转为 false
+		//%取余的时候 结果的正负与分子的正负相同  -5%3=-2  5%-3=2
+		
+		
+		//console.log(5 && 8); 返回的是 8  原因是因为，第一个值为ture 直接返回第二个的值
+		//console.log(null && '红浪漫'); 返回值是null   第一个Boolean转换后为false，直接返回第一个的值，再次强调，返回的是值
+		//if优化，如果if代码块内的代码无意义，可以交换判断条件，这样if..else..  就可以变成if了 
+		
+		//对象的属性用键值对，键名如果不符合命名规范的话，需要用引号包住
+		//如果给对象添加一个键名不合命名规范的属性的话，需要使用中括号语法  obj["键名"]=值；
+		
+		//对象属性的赋值优先级比变量赋值优先级高(连等情况下)
+						var a = {n:1};
+						var b = a;
+						a.x = a = {n:2};
+						//实际转为  a=a.x={n:2};
+						console.log(a.x);  //undefined
+						console.log(b.x);  //{n:2}
+						
+		//对象属性名如果是一个对象的话添加进去会是[object Object]
+								var a = {}；
+								var obj1 = {m:2}     
+								var obj2 = {n:2}/
+								var obj3 = function(){};
+						
+								a[obj1] = 4  
+								a[obj2] = 5     	
+								a.name ='kobe'
+								a[obj3] = 6;
+						
+								console.log(a[obj1]) 
+								console.log(a) 
+// offsetLeft offsetTop 
+  获取偏移量不如直接用getBoundingClientRect().left 兼容性好   
+			拿的是元素相对于上一个定位元素的偏移量：可以认为就是拿的绝对定位left值
+			切记如果进行offsetLeft的值进行加法运算不允许添加px       
+//用JS修改与transtion相关的属性的时候  第一次transtion 属性会应用不上 此时可以在JS代码运行的时候 运行一次与此transtion属性相关的代码	
+	或者使用transform：translate 属性去移动
+//盒子跟随鼠标移动判断边界的时候用鼠标位置去判断  用盒子的位置去判断会出现震荡		 
+		  
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 -->
+	</head>
+	<body>
+
+	</body>
+</html>

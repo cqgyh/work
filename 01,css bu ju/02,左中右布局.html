@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+      *{
+          margin: 0;
+          padding: 0;
+      }
+      section .wrapper {
+          min-width: 900px;
+          height: 500px;
+          background-color: skyblue;
+          display: flex;
+          /*justify-content: space-between;*/
+      }
+      section .wrapper .left {
+
+          background-color: tomato;
+          flex: 0 0 300px;
+
+      }
+      section .wrapper .center {
+
+          background-color: pink;
+          flex: 1 1 auto;
+
+      }
+      section .wrapper .right {
+
+          background-color: aquamarine;
+          flex: 0 0 300px;
+
+      }
+
+
+  </style>
+</head>
+<body>
+<section>
+  <!-- 1假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为 300px，中间自适应 -->
+  <div class="wrapper">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+  </div>
+</section>
+
+</body>
+</html>

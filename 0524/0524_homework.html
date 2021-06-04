@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //作业太少，加大力度--.
+    /* 作业
+
+     1. 已知一个url地址 "http://www.baidu.com?name=laozhang&age=18&sex=nv";
+     把查询字符串以对象的形式表示  {name:"laozhang",age:18,sex:"nv"}
+     2. 已知一个url地址 "http://www.baidu.com",已知用户提交信息是{name:"laozhang",age:18,sex:"nv"}
+     请得到一个完整的地址："http://www.baidu.com?name=laozhang&age=18&sex=nv"
+
+     */
+
+    //作业1.
+    //方法1，
+    {
+        let str_url = "http://www.baidu.com?name=laozhang&age=18&sex=nv";
+
+        function showSearchObj(str) {
+            //剪切开始的位置 是str.indexOf("?")   console.log(str.indexOf("?"));
+            //创建对象用于保存{name:"laozhang",age:18,sex:"nv"}
+            let search_obj = {};
+            //保存剪切好的字符串
+            let str_split_arr = str.slice(str.indexOf("?") + 1).split('&');
+            // console.log(str_split_arr);
+            str_split_arr.forEach((item, index) => {
+                //=号前面是key    后面是value
+                let key = item.slice(0, item.indexOf("="))
+                let value = item.slice(item.indexOf("=") + 1)
+                search_obj[key] = value;
+                //判断是不是age属性 如果是 值保存为number类型
+                if (key == 'age') {
+                    search_obj[key] = Number(value);
+                }
+            })
+
+            return search_obj
+        }
+
+        let re = showSearchObj(str_url);
+        console.log(re);
+
+    }
+    //方法2，
+    {
+        let str_url="http://www.baidu.com?name=laozhang&age=18&sex=nv";
+        //str_url.indexOf('?') 第一个问号的下标
+        let check_info_obj=str_url.slice(str_url.indexOf('?')+1).split('&').reduce((prev,item) => {
+            //解构赋值
+            let [key,value]=item.split('=');
+            prev[key]=value;
+            return prev;
+        },{})
+        console.log(check_info_obj);
+    }
+
+
+    //作业2.
+    //方法1.
+    {
+        let hm_2_str_url = "http://www.baidu.com";
+        let hm_2_obj = {name: "laozhang", age: 18, sex: "nv"};
+
+        function getSearchUrl(str, obj) {
+            //拼接字符串
+            let str_fin = str + '?';
+            for (let key in obj) {
+                str_fin += key + '=' + obj[key] + '&';
+            }
+            //去除最后一个&符号
+            str_fin = str_fin.slice(0, -1);
+            return str_fin;
+        }
+
+        let re_2 = getSearchUrl(hm_2_str_url, hm_2_obj);
+        console.log(re_2);
+    }
+    //方法2.
+    {
+        let str_url="http://www.baidu.com";
+        let check_info_obj={name:"laozhang",age:18,sex:"nv"};
+        let check_url=str_url+'?'
+
+        for (let key in check_info_obj) {
+            check_url+=key+'='+check_info_obj[key]+'&';
+        }
+        check_url=check_url.slice(0,-1);
+
+        console.log(check_url);
+
+
+    }
+</script>
+
+</body>
+</html>

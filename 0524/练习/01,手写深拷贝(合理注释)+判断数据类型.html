@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //深拷贝
+  let obj1={
+    name:'李云龙',
+    age:40,
+    hobby:{
+      eat:'肉',
+      drink:'酒'
+    }
+  };
+
+  console.log(deepClone(obj1));
+  let re=deepClone(obj1);
+  console.log(re === obj1);
+  console.log(re.hobby === obj1.hobby);
+
+  //深拷贝
+  function deepClone(date) {
+    //判断要克隆的数据类型，数组和对象可以克隆 其他不需要
+      let new_date=null;
+      if(checkType(date)==='array'){
+           new_date=[];
+      }else if(checkType(date)==='object'){
+           new_date={};
+      } else{
+          return date;
+      }
+
+      for (let key in date) {
+          //递归判断value是否是array object 是的继续深拷贝
+          new_date[key]=deepClone(date[key]);
+      }
+
+    return new_date;
+  }
+
+
+
+  //判断数据类型
+  function checkType(date) {
+      return Object.prototype.toString.call(date).slice(8,-1).toLowerCase();
+  }
+
+</script>
+</body>
+</html>

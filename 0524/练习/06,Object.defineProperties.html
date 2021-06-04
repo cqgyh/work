@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Object.defineProperties
+    //给已经存在的对象添加描述属性或方法
+    let obj1 = {};
+    Object.defineProperties(obj1, {
+        name: {
+            value: 'zzz',
+            writable: true, //默认false  是否可以修改
+            enumerable: true, //默认false  是否可以被枚举
+            configurable: false,// 默认false  是否可以被改变且该属性是否可以从对应对象中删除。
+    }
+    })
+    obj1.name='aa';
+    for (let obj1Key in obj1) {
+        console.log(obj1Key)
+    }
+    console.log(obj1);
+</script>
+
+</body>
+</html>

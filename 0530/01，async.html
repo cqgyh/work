@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+        - async函数是Generator函数的语法糖，使用async加函数的外边，表示处理异步
+        - async返回一个promise对象，默认是成功状态的promise
+        - 如果await后的promise对象返回失败，则async直接返回这个失败的promise对象（状态+值）
+
+        awaite遇到成功的promise时
+        - asycn返回的promise对象的值，是async函数的返回值
+        - await来处理异步代码
+        - await等待，只能等待promise对象
+        - await的返回值 就是等的promise对象的值
+        */
+
+   //async  内部await 后面是一个成功的promise对象的话 可以继续执行，如果是一个失败的的promise对象的话直接返回这个失败的promise对象
+    async function fn() {
+        console.log(1111);
+
+        const dataA = await new Promise((resolve, reject) => {
+            console.log("请求数据");
+            setTimeout(() => {
+                try {
+                    // throw new TypeError("Err:Aerr");
+                    console.log("A成功");
+                    const dataA = {
+                        name: "laowang"
+                    }
+                    resolve(dataA);
+                    // reject('A接受失败')
+                } catch (e) {
+                    reject(e)
+                    console.log(e);
+                }
+
+            }, 2000)
+        });
+        console.log(re);
+
+        const dataB = await new Promise((resolve, reject) => {
+            console.log("请求B数据");
+            setTimeout(() => {
+                console.log("B成功");
+                const dataB = {
+                    age: 18
+                }
+                resolve(Object.assign({}, dataB, dataA));
+            }, 2000)
+        });
+
+        const allData = await new Promise((resolve, reject) => {
+            console.log("请求C数据");
+            setTimeout(() => {
+                console.log("C成功");
+                const dataC = {
+                    sex: "nan"
+                }
+                resolve(Object.assign({}, dataC, dataB));
+            }, 2000)
+        });
+
+
+        return allData;
+    }
+
+    const re = fn();
+    // re();
+    console.log(re);
+
+    re.then((data) => {
+        console.log(data);
+        console.log(re);
+
+    }).catch((err) => {
+        console.log(err);
+    })
+</script>
+</body>
+</html>

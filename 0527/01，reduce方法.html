@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+a
+<script>
+
+    console.log(Array.prototype);
+    //reduce累加求和
+    {
+        let arr = [1, 2, 3];
+        let re = arr.reduce((prev, item, index, arr) => {
+            return prev += item;
+
+        }, 0);
+        console.log(re);
+    }
+
+    {
+        console.log('-----------------');
+        let arr=[1,2,3];
+        arr.reduce((prev,curr,index,arr) => {
+            console.log(index)
+
+        },0)
+        console.log('-----------------');
+    }
+
+    {
+
+        // 1. 已知一个url地址 "http://www.baidu.com?name=laozhang&age=18&sex=nv";
+        // 把查询字符串以对象的形式表示  {name:"laozhang",age:18,sex:"nv"}
+        let str_url = "http://www.baidu.com?name=laozhang&age=18&sex=nv";
+        //str_url.indexOf('?') 第一个问号的下标
+        let check_info_obj = str_url.slice(str_url.indexOf('?') + 1).split('&').reduce((prev, item) => {
+            //解构赋值
+            let [key, value] = item.split('=');
+            prev[key] = value;
+            return prev;
+        }, {})
+        console.log(check_info_obj);
+    }
+</script>
+
+</body>
+</html>

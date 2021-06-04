@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*  1   Promise.reject：用于将现有的对象转为失败的promise对象，从而控制异步流程
+               这个是将现有的promise对象转为失败的promise对象，还是直接创建了一个失败的promise对象返回了;
+      2   为什么yield后面跟立即执行函数不行？
+
+
+*/
+  let a=Promise.resolve();
+  let b=Promise.reject('错误');
+  console.log(a);
+  console.log(b);
+</script>
+</body>
+</html>

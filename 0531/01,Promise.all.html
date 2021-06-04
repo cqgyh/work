@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            try {
+                throw new Error('p1接收失败');
+                console.log('p1成功接收');
+                resolve('data_p1')
+            } catch (e) {
+                console.log(e);
+                // reject(e);
+            }
+        }, 1000);
+        })
+    // let p2 = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         try {
+    //             console.log('p2成功接收');
+    //             resolve('data_p2')
+    //         } catch (e) {
+    //             reject(e);
+    //         }
+    //     }, 2000);
+    // })
+    // let p3 = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         try {
+    //             console.log('p3成功接收');
+    //             resolve('data_p3')
+    //         } catch (e) {
+    //             reject(e);
+    //         }
+    //     }, 1500);
+    // })
+    console.log(p1);
+    let re=p1.catch((e) => {
+        console.log(e);
+    });
+    console.log(re);
+    // let re=Promise.all([p1,p2,p3]);
+    // console.log(re);
+try{
+    throw new Error('11111111')
+}catch (e){
+    console.log(e);
+}
+
+
+
+</script>
+
+</body>
+</html>

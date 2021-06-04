@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Promise.all  Promise.allSettled Promise.race Promise.any Promise.resolve Promise.reject-->
+<script>
+/*
+* 1,Promise.all:将多个promise的实例化对象包装成一个新的promise实力化对象，当被包装的promise对象状态全部为成功的时候，返回一个个成功的promise，
+*               值是被包装对象resolve()内部的值组成的数组。若被包装的promise实例化对象有一个是失败状态的，则返回一个失败的promise对象，其值是
+*               失败的promise实例化对象的值。
+* 2，Promise.allSettled:处理多个promise实力化对象，与Promise.all不同的是，无论处理的promise实例化对下你给的值是否成功或失败，最终返回的都是一个
+*                       成功的promise对象，其值是一个数组，数组中包含着对个对象，每个对象都是对其处理的值promise实例化对象的描述
+*                       [{ status: "rejected", reason: Error },{ status: "rejected", reason: Error }]
+* 3，Promise.race；竞速，同时监听多个promise对象，接受返回最快的那个promise对象并返回，无论这个promise对象状态是成功还是失败，
+*
+* 4，Promise.any： 监听多个promise对象，只有有一个成功了，则直接返回这个成功的promise对象如果全部都是失败了，则返回失败的promise对象，
+*                 并携带错误信息AggregateError: All promises were rejected
+* 5，Promise.resolve：用于将现有的对象转为成功的promise对象，从而控制异步流程
+*
+* 5，Promise.reject：用于将现有的对象转为失败的promise对象，从而控制异步流程
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+* */
+
+
+
+</script>
+</body>
+</html>

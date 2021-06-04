@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //创建一个Person类
+  class  Person{
+      //创建类构造器
+   constructor(name,age) {
+       //共有属性
+       this.name=name;
+       this.age=age;
+       //直接给实例化添加的方法被叫做特权方法
+       this.vip=function () {
+           console.log('我是特权方法');
+       }
+   }
+
+   //给Person设置私有属性，也是静态属性
+      static show=function () {
+          console.log('我是Person的静态属性');
+      }
+   //直接设置的属性和方法是实例化对象的公共属性或方法
+      //相当于直接在Person原型上进行设置
+      say(){
+          console.log('hello');
+      }
+  }
+
+  //创建一个Student类继承Person类
+  class Student extends Person{
+      //创建构造器
+      constructor(name,age,gender) {
+          //使用extends继承的时候子类的this直接指向了父类
+          //super执行父类的调用
+          //super方法用于将this初始化，归还给子类
+          //super类似 call
+          super(name,age);
+          this.gender=gender;
+      }
+      //设置子类共有的方法
+      study(){
+          console.log('学生开始学习了');
+      }
+  }
+ let s=new Student('张三',18,'nan');
+  console.dir(Student);
+  console.log(s);
+  s.say();
+
+
+</script>
+</body>
+</html>

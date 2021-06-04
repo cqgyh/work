@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            overflow: hidden;
+        }
+        body{
+            min-width: 600px;
+        }
+
+        section .wrapper div {
+            height: 800px;
+        }
+
+        section .wrapper .left {
+            min-width: 200px;
+            width: 200px;
+            float: left;
+            background-color: skyblue;
+        }
+
+        section .wrapper .right {
+            min-width: 200px;
+            width: 200px;
+            float: right;
+            background-color: pink;
+            position: relative;
+            /*left: -300px;*/
+            top: -800px;
+        }
+
+        section .wrapper .center {
+            background-color: tomato;
+            /*padding: 200px;*/
+            margin: 0 200px;
+            overflow-wrap: break-word;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+
+<section>
+
+    <div class="wrapper">
+        <!-- 1假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为 300px，中间自适应 -->
+        <div class="left"></div>
+        <div class="center">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+        <div class="right"></div>
+    </div>
+</section>
+
+
+</body>
+</html>

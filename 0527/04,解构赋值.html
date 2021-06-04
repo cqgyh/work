@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * 解构赋值：用于声明并接收结构出来的变量,一一对应接收
+    *          解构赋值对象的时候，参数名字必须和对象内部的属性名字一样
+    *
+    * */
+
+    let arr=[1,2,3,4,5,6];
+    let [a,b,c,d,e,f]=arr;
+    console.log(a,b,c,d,e,f)
+
+    let obj={
+        name:'zz',
+        age:18
+    }
+    let {name,age}=obj;
+    console.log(name, age);
+
+    //name 是用来寻找对象内部属性为name的key  n是用来接收保存value的
+    let {name:n,age:ag}=obj;
+    console.log(n, ag);
+
+
+</script>
+
+</body>
+</html>

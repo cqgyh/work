@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //获取一个 7天以后现在的时间
+
+
+
+        //获取当前时间
+        let now_time=Date.now();
+        //计算7天一共多少毫秒
+        let week_have_ms=7*24*60*60*1000;
+        //7天后的现在毫秒数
+        let after_week_time=now_time+week_have_ms;
+        console.log('现  在：'+now_time);
+        console.log('7天总毫秒数：'+week_have_ms);
+        console.log('一周后：'+after_week_time);
+        console.log('现  在：'+new Date(now_time).toLocaleString());
+        console.log('一周后：'+new Date(after_week_time).toLocaleString());
+
+
+
+
+</script>
+
+</body>
+</html>

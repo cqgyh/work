@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  * Object.create() 创建对象的第三种方式
+  *        参数1；可以指定任意对象作为新对象的原型
+  *        参数2；可选参数，添加属性与属性描述
+  *               属性:{
+  *                   value:属性值,
+  *                   writable:false, 默认false  是否可以修改
+  *                   enumerable:false, 默认false  是否可以被枚举
+  *                   configurable:false, 默认false  是否可以被改变且该属性是否可以从对应对象中删除。
+  *                 }
+  *    给新对象使用普通成员访问扩展的属性不受描述影响
+  *
+  * */
+  let obj1=Object.create(Object.prototype,{
+    name:{
+      value:'哈哈',
+      writable:true,
+      enumerable:true,
+      configurable:true
+    }
+  });
+  console.log(obj1);
+  obj1.name='heiehi';
+  console.log(obj1);
+
+
+
+</script>
+
+</body>
+</html>

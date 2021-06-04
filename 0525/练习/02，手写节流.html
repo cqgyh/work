@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+
+<script>
+  let inputNode=document.querySelector('input');
+  inputNode.onmousemove=throttle(fn1,300);
+
+  function fn1() {
+    console.log('1');
+    console.log(this)
+    console.log(event);
+
+  }
+
+  //封装节流 指在一定时间内只执行一次
+  function throttle(fn,time) {
+    let last_time=0;
+    return function () {
+      //判断两次执行时间是否超过time 未超过不执行
+      //获取此次执行的时间
+      let now_time=Date.now();
+      if(now_time-last_time<time){
+        return;
+      }
+      //超过time则将这次执行代码的时间给last_time
+      last_time=now_time;
+      //执行核心代码块
+      //将核心代码的this绑定到事件执行对象上
+      //将event事件参数也传给核心函数
+      fn.call(this,arguments[0]);
+
+    }
+  }
+
+
+
+
+</script>
+
+</body>
+</html>

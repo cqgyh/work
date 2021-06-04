@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+    /*
+        then:
+            - 当promise对象是成功状态的时候，会自动的调用then方法
+            - then中一般会书写一个回调函数,回调函数的有一个形参data，就是成功promise对象的值
+
+            - then的返回值：
+                - 当then中不传递任何参数，则会出现穿透,返回值和调用then的promise对象一模一样
+                - 当then中没有返回promise状态的时候，默认返回成功状态
+                - 当then中返回的不是一个promise对象的时候，then默认成功状态的值，就是return的值
+                - 当then中返回一个promise对象的时候，then的状态和值 与 返回的promise的状态和值一致
+                - 当调用then的promis对象是一个失败的时候，则then直接返回一个失败的promise对象
+
+    */
+
+    //请求数据
+    const p1 = new Promise((resolve, reject) => {
+        //请求a数据
+        setTimeout(() => {
+            try {
+                throw new Error("b失败")
+                console.log("a数据请求成功");
+                resolve([1, 2, 3, 5])
+            } catch {
+                resolve([1, 2, 3, 5])
+            }
+        }, 2000)
+    });
+    console.log(p1);
+
+
+    // console.log(p1);
+    //
+    //
+    // //请求成功以后对数据处理
+    // const p2 = p1.then((data) => {
+    //     //继续执行请求a后的代码  开始请求b
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             try {
+    //                 // throw new Error("b失败")
+    //                 console.log("b成功");
+    //                 resolve("b成功")
+    //             } catch (e) {
+    //                 reject(e);
+    //             }
+    //         }, 1500);
+    //     })
+    // });
+    //
+    // console.log(p2);
+    //
+    //
+    // //catch 处理失败的promise对象的
+    // /*
+    //     catch的返回值：
+    //         - 如果catch中没有任何参数，当失败的promise调用catch的时候，也会穿透，catch返回这个失败的promise对象
+    //         - catch默认是返回成功的promise对象
+    //         - 如果catch返回宇哥promise对象，则catch的返回值和这个promise对象一致
+    //
+    //
+    //
+    // */
+    //
+    // const p3 = p1.catch((e) => {
+    //     console.log(e);
+    //     console.log("wocuole");
+    //
+    //     return Promise.reject();
+    // });
+    // console.log(p3);
+    //
+    //
+    // /*
+    //     finally:
+    //         无论成功和失败 都会调用finally
+    //
+    // */
+    //
+    // const p4 = p1.finally(() => {
+    //     console.log("finally");
+    // })
+
+
+
+
+
+
+
+    //根据p1的情况继续处理
+    /* const p2 = p1.then((data) => {
+        console.log("then");
+        console.log(data);
+        const re = data.reduce((p, i) => {
+            return p + i
+        });
+        console.log(re);
+    });
+    console.log(p2); */
+</script>
+</body>
+
+</html>

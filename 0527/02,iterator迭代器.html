@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //iterator接口
+    //具有length属性的且具备自然增长的下表都可以用iterator接口
+    console.log(Array.prototype);
+    let arr = [1, 2, 3, 4, 5, 6];
+    let arr_iterator = arr[Symbol.iterator]();
+    console.log(arr_iterator);
+    console.log(arr_iterator.next());
+    // console.log(arr_iterator.next());
+    // console.log(arr_iterator.next());
+    // console.log(arr_iterator.next());
+    // console.log(arr_iterator.next());
+    // console.log(arr_iterator.next());
+    // console.log(arr_iterator.next());
+    let obj = {
+        name: 'awsl',
+        age: 18
+    };
+    console.dir(Object);
+    console.log(Object.keys(obj));
+    console.log(Object.values(obj));
+    console.log(Object.entries(obj));
+
+    //for of 遍历对象
+    for (let key of Object.keys(obj)) {
+        console.log(key, obj[key]);
+    }
+
+    //手写iterator
+    function myIterator(arr) {
+
+        //计数器 用于计算调用next的次数以及确定相应的返回值
+        let index = 0;
+        //返回的是一个迭代器对象
+        return {
+            next: function f() {
+                if (index < arr.length) {
+                    return {value: arr[index++], done: false};
+                } else {
+                    return {value: arr[index++], done: true};
+                }
+            }
+        }
+    }
+    //定义一个变量接受迭代器对象，不接收的话 迭代器调用一次就会被释放，接收是将一个指针指向这个迭代器对象，不让他立即从栈内存中释放
+    let arr_myIterator = myIterator(arr);
+
+    console.log(arr_myIterator.next());
+    console.log(arr_myIterator.next());
+    console.log(arr_myIterator.next());
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  //创建人的构造函数
+  function Person(name,age) {
+    this.name=name;
+    this.age=age;
+  }
+  //给Person添加公共方法
+  Person.prototype.say=function () {
+    console.log('hello');
+
+  }
+
+  //创建一个Student的构造函数
+  function Student(name,age,gender) {
+    //构造函数继承：继承属性
+    Person.call(this,name,age);
+    this.gender=gender;
+  }
+  //继承方法
+  //将Person的实例化对象作为Student的原型
+  Student.prototype=new Person();
+  //修复Student.prototype的构造器属性
+  //添加构造器属性 指向自身构造函数
+  Student.prototype.constructor=Student;
+
+  //添加Student的公共方法
+  Student.prototype.study=function () {
+    console.log('我只会学习');
+
+  }
+
+
+  let p=new Person('张三',22);
+  p.say();
+  let s=new Student('张三',22,'男');
+  s.say();
+  s.study();
+
+
+</script>
+</body>
+</html>

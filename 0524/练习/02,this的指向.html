@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  * this指向；
+  *       1，默认调用
+  *       2，对象调用
+  *       3，实例化调用
+  *       4，强制绑定
+  *
+  *
+  * */
+
+  function f1() {
+    console.log(this);
+    let age=1;
+    this.name='22';
+  }
+  //1 默认调用
+  f1();
+  //2 对象调用
+  let obj1={
+    fn:f1,
+    a:1
+  }
+  obj1.fn();
+
+  //3  实例化调用
+  let re=new f1();
+  console.log(re);
+  //4  强制绑定
+  f1.call('1'); //String
+  f1.apply(1); //Number
+  f1.bind([])(); //[]
+
+  f1.call(null);//Window
+  f1.call(undefined);//Window
+
+
+
+</script>
+
+</body>
+</html>

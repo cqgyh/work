@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    #outer {
+      width: 800px;
+      height: 800px;
+      border: 2px solid #000;
+      margin: 1000px 50px;
+      background-color: aqua;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #inner {
+      width: 500px;
+      height: 500px;
+      border: 2px solid #000;
+      margin: 50px;
+      background-color: beige;
+      /* position: relative; */
+    }
+
+    #con {
+      width: 300px;
+      height: 300px;
+      border: 2px solid #000;
+      margin: 50px;
+      background-color: chartreuse;
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #000;
+      margin: 50px 40px;
+      background-color: darkgoldenrod
+    }
+  </style>
+</head>
+<body>
+<div id="outer">
+  <div id="inner">
+    <div id="con">
+      <div id="box"></div>
+    </div>
+  </div>
+</div>
+<script>
+  let oBox=document.querySelector('#box')
+
+  //第一种 封装函数  
+  //封装函数
+  function getEleToDoc(Ele) {
+    //初始化变量保存 左边和上边的值
+    var l = 0,
+            t = 0;
+
+    //用一个变量保存当前的元素
+    var o = Ele;
+    //while判断o是否还存在
+    while (o) {
+      //判断o是不是最开始的Ele 如果不是 则需要计算当前o的边框
+      if (o === Ele) {
+        t += o.offsetTop;
+        l += o.offsetLeft;
+      } else {
+        t += o.offsetTop + o.clientTop;
+        l += o.offsetLeft + o.clientLeft;
+      }
+
+      //每次o应该改变为上一个定位的元素
+      o = o.offsetParent;
+    }
+    //返回值
+    return {
+      left: l,
+      top: t
+    }
+
+  }
+  var re = getEleToDoc(oBox);
+  console.log(re);
+
+
+  // 第二种
+  function getEleToDocDistance(ele) {
+    //获取元素距离视口的距离
+    let ele_left=ele.getBoundingClientRect().left;
+    let ele_top=ele.getBoundingClientRect().top;
+    //获取dou滚动的距离
+    let Doc_scroop_left=document.documentElement.scrollLeft;
+    let Doc_scroop_top=document.documentElement.scrollTop;
+    return {
+      left:parseInt(ele_left+Doc_scroop_left),
+      top:parseInt(ele_top+Doc_scroop_top)
+    }
+    
+  }
+
+  var re1 = getEleToDocDistance(oBox);
+  console.log(re1);
+
+
+
+</script>
+</body>
+</html>

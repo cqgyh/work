@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+
+<script>
+let inputNode=document.querySelector('input');
+
+inputNode.oninput=debounce(function (event) {
+  console.log(1);
+  console.dir(this);
+  console.log(event);
+
+},300);
+
+
+  function fn() {
+    console.log(1);
+    console.dir(this);
+    console.log(event);
+  }
+
+
+
+  //封装防抖  指一段时间内连续触发，只执行最后一次
+  function debounce(fn,time) {
+
+    let timer=null;
+    //返回需要一个函数
+    return function (event) {
+
+      //保存this event
+      let  that=this;
+      let  e=event;
+
+      //设置一个定时器监听，当一段事件内连续触发时，只执行最后一次
+      clearTimeout(timer);
+      timer=setTimeout(function () {
+
+        //将fn  的this执行到事件对象上，传入事件参数e
+        fn.call(that,e);
+
+        },time)
+
+    }
+  }
+
+
+</script>
+
+</body>
+</html>
