@@ -4,17 +4,18 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/atguigu', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
-//设置数据库监听事件
-
-mongoose.connection.once('open', (err) => {
-    if(err){
-        console.log(err);
-        console.log('数据库连接失败');
-        return;
-    }
-
+}).then(() => {
     console.log('数据库连接成功');
-})
+}).catch((err) => {
+    console.log(err);
+    console.log('数据库连接失败');
+});
+
+//设置数据库监听事件
+// mongoose.connection.once('open', (err) => {
+//
+//
+//     console.log('数据库连接成功');
+// })
 
 
