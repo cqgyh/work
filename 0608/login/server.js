@@ -8,6 +8,11 @@ const app = express();
 const path = require('path');
 //引入use对象模块
 const userModel=require("./model/user");
+//引入第三方模版引擎ejs
+const ejs=require('ejs');
+//通知express使用ejs模版引擎
+app.set('view engine','ejs');
+app.set('views','views');
 
 //设置接口
 //注册接口
