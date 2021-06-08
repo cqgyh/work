@@ -17,8 +17,14 @@ app.get("/register",async (req,res) => {
 
     //查看用户名和密码是否为空
     if(!username||!password){
-        res.send("账号密码不能为空");
-        return;
+        //拼接err.ejs的路径
+        const filePath=path.resolve(__dirname,'./public/err.ejs');
+        //返回页面
+        return res.render(filePath,{
+            errData:"账号密码不能为空"
+        });
+        // res.send("账号密码不能为空");
+        // return;
     }
 
     //向数据库写入当前用户信息
@@ -26,8 +32,9 @@ app.get("/register",async (req,res) => {
         username,
         password
     });
-
-    res.send("注册成功");
+//注册成功，跳转到登陆页面
+//     res.send("注册成功");
+    res.redirect('/login.html');
 
 
 })
@@ -37,20 +44,40 @@ app.get('/login', async (req,res) => {
     const {username,password}=req.query;
     //查看用户名和密码是否为空
     if(!username||!password){
-        return res.send('用户名和密码不能为空');
+        //拼接err.ejs的路径
+        const filePath=path.resolve(__dirname,'./public/err.ejs');
+        //返回页面
+        return res.render(filePath,{
+            errData:"用户名和密码不能为空"
+        });
+        // return res.send('用户名和密码不能为空');
     }
     //根据用户名查询是否存在用户
     const isHasUser=await userModel.findOne({username});
 
     if (!isHasUser){
-        return res.send('用户不存在');
+        //拼接err.ejs的路径
+        const filePath=path.resolve(__dirname,'./public/err.ejs');
+        //返回页面
+        return res.render(filePath,{
+            errData:"用户不存在"
+        });
+        // return res.send('用户不存在');
     }
     //判断密码是否正确
-    if(isHasUser.password===password){
-        return res.send('登陆成功');
-    }else {
-        return res.send('密码输入错误');
+    if(isHasUser.password!=password){
+        //拼接err.ejs的路径
+        const filePath=path.resolve(__dirname,'./public/err.ejs');
+        //返回页面
+        return res.render(filePath,{
+            errData:"密码输入错误"
+        });
+        // return res.send('密码输入错误');
     }
+    //登陆成功，跳转到center页面
+    const filePath=path.resolve(__dirname,'./public/center.html');
+    res.sendFile(filePath);
+
 
 })
 
