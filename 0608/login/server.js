@@ -54,11 +54,13 @@ app.get('/login', async (req,res) => {
 
 })
 
-
-
-
-
-
+//静态资源请求
+app.get('/static/:src', (req,res) => {
+    const {src}=req.params;
+    console.log(req.params);
+    const  filePath=path.resolve(__dirname,'static',src);
+    res.sendFile(filePath)
+})
 
 
 
