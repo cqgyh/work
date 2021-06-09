@@ -30,6 +30,9 @@ router.use('/center.html',async (req,res,next) => {
             if (re){
                 next()
             }else{
+                //查询不到正确userID
+                //清楚掉这个错误的userID
+                res.clearCookie('userID');
                 //拼接err.ejs的路径
                 const filePath=path.resolve(__dirname,'../public/err.ejs');
                 //返回页面
@@ -39,6 +42,8 @@ router.use('/center.html',async (req,res,next) => {
 
             }
         }catch (e) {
+            //清楚掉这个错误的userID
+            res.clearCookie('userID');
             //拼接err.ejs的路径
             const filePath=path.resolve(__dirname,'../views/err.ejs');
             //返回页面
