@@ -9,6 +9,7 @@ const app = express();
 const isEmptyRouter=require('./router/isEmptyRoter');
 const loginRouter=require('./router/loginRouter');
 const registerRouter=require('./router/registerRouter');
+const centerRouter=require('./router/centerRouter');
 
 //引入第三方模版引擎ejs
 const ejs=require('ejs');
@@ -33,6 +34,7 @@ app.use(express.static("./static"));
 app.use(isEmptyRouter);
 app.use(loginRouter);
 app.use(registerRouter);
+app.use(centerRouter);
 
 
 //监听端口号和服务器状态，确认服务器是否启动成功

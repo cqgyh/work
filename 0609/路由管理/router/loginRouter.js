@@ -26,7 +26,7 @@ router.get('/login', async (req,res) => {
 
     if (!isHasUser){
         //拼接err.ejs的路径
-        const filePath=path.resolve(__dirname,'../public/err.ejs');
+        const filePath=path.resolve(__dirname,'../views/err.ejs');
         //返回页面
         return res.render(filePath,{
             errData:"用户不存在"
@@ -44,8 +44,13 @@ router.get('/login', async (req,res) => {
         // return res.send('密码输入错误');
     }
     //登陆成功，跳转到center页面
-    const filePath=path.resolve(__dirname,'../public/center.html');
+    const filePath=path.resolve(__dirname,'../views/center.html');
     res.sendFile(filePath);
+    //返回响应设置cookie
+    res.cookie('userID',isHasUser._id,{
+        maxAge:1000*60*60*24,//设置cookie有效期为一天
+        httpOnly:true,//设置此cookie只能由服务端操作
+    });
 
 
 })
