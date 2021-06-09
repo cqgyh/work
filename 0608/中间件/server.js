@@ -63,6 +63,17 @@ app.get("/register",async (req,res) => {
     //     // res.send("账号密码不能为空");
     //     // return;
     // }
+    const isHasUser = await userModel.findOne({
+        username
+    })
+
+    if (isHasUser) {
+        //拼接err.ejs的路径
+        const filePath = path.resolve(__dirname, "./public/err.ejs");
+        return res.render(filePath, {
+            errData: "用户名已经被注册"
+        })
+    };
 
     //向数据库写入当前用户信息
     await userModel.create({
