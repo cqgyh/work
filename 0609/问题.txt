@@ -1,0 +1,6 @@
+1,await等待的不是promise对象怎么办，类似下面这个 await等待的是不是一个普通的对象，是的话会怎样？
+     const isHasUser = await userModel.findOne({
+            username
+        });
+2,router.get和router.use的区别
+3，router.use回调的第三个参数为next，router.get中的回调有这个参数吗
