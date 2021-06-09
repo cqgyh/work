@@ -1,8 +1,8 @@
 //准备建立一个服务器
 //引入第三方express模块
-const expres = require('express');
+const express = require('express');
 //新建一个application
-const app = expres();
+const app = express();
 //与数据库建立连接
 require('./db');
 //引入用户信息模块
@@ -18,7 +18,7 @@ app.set("views", "views");
 
 //使用官方自定义静态资源管理中间件
 //释放public资源 交给第三方管理 这里需要写相对路径
-app.use(expres.static('./public'));
+app.use(express.static('./public'));
 
 //自定义判断帐号密码不为空中间件
 app.use((req, res, next) => {

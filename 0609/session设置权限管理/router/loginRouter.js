@@ -46,6 +46,7 @@ router.get('/login', async (req,res) => {
 
     //登陆成功,设置请求session存储到服务端
     req.session.username=username;
+    console.log(req.session.username);
     //登陆成功，跳转到center页面
     const filePath=path.resolve(__dirname,'../views/center.html');
     res.sendFile(filePath);
