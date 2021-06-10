@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" id="form">
+  user: <input type="text" name="username" id="username">
+  <br>
+  pass: <input type="password" name="password" id="password">
+  <br>
+  <button id="btn">提交</button>
+</form>
+<script>
+  const formNode=document.getElementById('form');
+  const userNode=document.getElementById('username');
+  const passNode=document.getElementById('password');
+  const btnNode=document.getElementById('btn');
+
+  formNode.onsubmit=function (e) {
+    //1,实例化一个XMLHttpRequest 对象
+    const xhr=new XMLHttpRequest();
+    //2,打开链接通道  第三个参数是是否异步  最后加上时间戳是因为每次的一样的话 会命中缓存 所以加个时间戳 让每次请求的都不一样
+    xhr.open('get',`/login?user=${userNode.value}&pass=${passNode.value}&t=${Date.now()}`,true);
+    //3,发送请求
+    xhr.send();
+    //4，接收响应
+    //4.xhr有一个onreadystatechange事件可以接受请求过程中readystate码的改变
+    xhr.onreadystatechange=function () {
+       console.log(xhr.readyState);
+      //当readyStat变成4，并且响应状态码status是200的时候代表请求真正完成
+      if (xhr.readyState===4 && xhr.status===200){
+
+        //处理业务
+        //有两个属性接收到响应
+        //xhr.responseText:接受文本数据 json 字符串等
+        //xhr.responseXML:接受XML的数据
+        console.log(JSON.parse(xhr.responseText))
+
+      }
+
+
+    }
+
+
+
+    //阻止默认事件发生，不让刷新页面
+    // e.preventDefault?e.preventDefault():e.returnValue=false;
+    return false;
+
+  }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" id="form">
+  user: <input type="text" name="username" id="username">
+  <br>
+  pass: <input type="password" name="password" id="password">
+  <br>
+  <button id="btn">提交</button>
+</form>
+<script>
+  const formNode=document.getElementById('form');
+  const userNode=document.getElementById('username');
+  const passNode=document.getElementById('password');
+  const btnNode=document.getElementById('btn');
+  //post请求
+  formNode.onsubmit=function (e) {
+      //1,实例化一个XMLHttpRequest 对象
+      const xhr=new XMLHttpRequest();
+      //2,打开链接通道  第三个参数是是否异步
+      xhr.open('post','/login',true);
+      //3,发送请求 每次请求都是最新，不需要走缓存 post本来就是设计新增资源的的 所以不会走缓存
+      //post 请求需要设置请求头
+      // xhr.setRequestHeader('Content-Type', "application/json;charset=utf-8");//发送的是json字符串
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8")//发送的是form样式的
+      xhr.send(`user=${userNode.value}&pass=${passNode.value}`);
+      //4，接收响应
+      //4.xhr有一个onreadystatechange事件可以接受请求过程中readystate码的改变
+      xhr.onreadystatechange=function () {
+          console.log(xhr.readyState);
+          //当readyStat变成4，并且响应状态码status是200的时候代表请求真正完成
+          if (xhr.readyState===4 && xhr.status===200){
+
+              //处理业务
+              //有两个属性接收到响应
+              //xhr.responseText:接受文本数据 json 字符串等
+              //xhr.responseXML:接受XML的数据
+              console.log(JSON.parse(xhr.responseText))
+
+          }
+
+
+      }
+
+
+
+      //阻止默认事件发生，不让刷新页面
+      // e.preventDefault?e.preventDefault():e.returnValue=false;
+      return false;
+
+  }
+
+
+
+
+
+</script>
+</body>
+</html>
