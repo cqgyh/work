@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+
+
+<button id="btn">提交</button>
+
+<script>
+
+    $('#btn').click(function () {
+        // $.ajax({
+        //     method:'get',//控制请求方式
+        //     url:'/login',//请求地址
+        //     cache:false,//是否缓存
+        //     // data:'user=123&pass=123',//请求方式
+        //     data:{
+        //         user:'123',
+        //         pass:'123'
+        //     },
+        //     dataType:'json',//期望的到的类型
+        //     headers:{//设置请求头
+        //         'Cache-Control':'max-agt=0'
+        //     },
+        //     success(data) {
+        //         console.log(data);
+        //     }
+        // })
+
+
+        // $.ajax('/login', {
+        //         // method: 'get',//控制请求方式
+        //         // url:'/login',//请求地址
+        //         cache: false,//是否缓存
+        //
+        //         // data:'user=123&pass=123',//请求方式
+        //         data: {
+        //             user: '123',
+        //             pass: '123'
+        //         },
+        //         dataType: 'json',//期望的到的类型
+        //         headers: {//设置请求头
+        //             'Cache-Control': 'max-agt=0'
+        //         },
+        //         success(data) {
+        //             console.log(data);
+        //         }
+        //     }
+        // )
+
+        // $.get('/login',{
+        //     user: '123',
+        //     pass: '123'
+        // }, (data) => {
+        //     console.log(data);
+        // })
+
+        // $.post('/login',{
+        //                 user: '123',
+        //                 pass: '123'
+        //             }, (data) => {
+        //     console.log(data);
+        // })
+
+        $.getJSON('/login',{
+            user: '123',
+            pass: '123'
+        }, (data) => {
+            console.log(data);
+        })
+
+
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+
+
+<button id="btn">提交</button>
+
+<script>
+
+    $('#btn').click(function () {
+    try {
+        newScript.remove();
+    }catch (e) {
+
+    }
+
+    //跨域请求，利用script的src属性
+        const newScript=document.createElement('script');
+        newScript.src='http://127.0.0.1:3000/login?user=123&pass=123&callback=fn';
+        document.body.appendChild(newScript);
+
+
+    })
+
+    function fn(data) {
+        console.log(data);
+    }
+
+
+</script>
+</body>
+</html>
