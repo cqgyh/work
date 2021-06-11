@@ -12,7 +12,11 @@
     "express-session": "^1.17.2",
     "mongoose": "^5.12.13"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.5",
+    "@babel/preset-env": "^7.14.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +28,11 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cqgyh/work/issues"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ]
   },
   "homepage": "https://github.com/cqgyh/work#readme"
 }
