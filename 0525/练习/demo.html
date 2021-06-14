@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="text">
+
+<script>
+    let inputNode=document.querySelector('input');
+    inputNode.onclick=debounce(fn1,1000);
+    function fn1() {
+        console.log('1');
+        console.log(this)
+        // console.log(event);
+        console.log(arguments)
+
+    }
+
+    //节流 在一段时间内只执行一次
+    // function throttle(fn,time) {
+    //     //上一次进入的时间
+    //     let lastTime=0;
+    //     return function (e){
+    //     // 当前进入的时间
+    //         let nowTime=Date.now()
+    //         //判断两次时间时间间隔是否超过设置的最小时间,小于的话不执行
+    //         if (nowTime-lastTime<time){
+    //             return;
+    //         }
+    //         //将这次进入的时间赋值给上次
+    //         lastTime=nowTime;
+    //         //执行业务逻辑
+    //         fn.call(this,e);
+    //     }
+    // }
+
+    //防抖，连续点击只执行最后一次
+    function debounce(fn,time) {
+        //设置定时器名字便于清除
+        let timer=null;
+        return function (event) {
+
+            //每次进入先把上一次的定时器清除掉，保证只有一个定时器在运行
+            clearTimeout(timer);
+            timer=setTimeout(() => {
+                //执行核心代码
+                fn.call(this,event)
+
+
+            },time)
+
+
+        }
+    }
+</script>
+</body>
+</html>
