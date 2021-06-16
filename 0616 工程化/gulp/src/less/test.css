@@ -1,0 +1,11 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: turquoise;
+}
+.box .box2 {
+  width: 100px;
+  height: 100px;
+  background-color: violet;
+}
+/*# sourceMappingURL=test.css.map */
