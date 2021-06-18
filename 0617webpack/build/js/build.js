@@ -10,6 +10,26 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/less/public.less":
+/*!******************************!*\
+  !*** ./src/less/public.less ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://0617webpack/./src/less/public.less?");
+
+/***/ }),
+
+/***/ "./src/less/test.less":
+/*!****************************!*\
+  !*** ./src/less/test.less ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://0617webpack/./src/less/test.less?");
+
+/***/ }),
+
 /***/ "./src/js/add.js":
 /*!***********************!*\
   !*** ./src/js/add.js ***!
@@ -26,7 +46,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _add__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add */ \"./src/js/add.js\");\n/* harmony import */ var _person_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./person.json */ \"./src/js/person.json\");\n\r\n\r\n\r\n\r\n(0,_add__WEBPACK_IMPORTED_MODULE_0__.default)(3,4);\r\nconsole.log(_person_json__WEBPACK_IMPORTED_MODULE_1__);\r\n\n\n//# sourceURL=webpack://0617webpack/./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _add__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add */ \"./src/js/add.js\");\n/* harmony import */ var _person_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./person.json */ \"./src/js/person.json\");\n/* harmony import */ var _less_public_less__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../less/public.less */ \"./src/less/public.less\");\n/* harmony import */ var _less_test_less__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../less/test.less */ \"./src/less/test.less\");\n\r\n\r\n\r\n//将所有的less文件引入到入口文件，让webpack进行统一编译,webpack会将他们写入的js中然后 以js的方式重新写入style标签中重新插入的页面\r\n\r\n\r\n\r\n\r\n\r\n(0,_add__WEBPACK_IMPORTED_MODULE_0__.default)(6,4);\r\nconsole.log(_person_json__WEBPACK_IMPORTED_MODULE_1__);\r\n\n\n//# sourceURL=webpack://0617webpack/./src/js/index.js?");
 
 /***/ }),
 

@@ -1,0 +1,11 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: violet;
+}
+.box .center {
+  width: 100px;
+  height: 100px;
+  background: url("../img/1.jpg");
+}
+/*# sourceMappingURL=test.css.map */
