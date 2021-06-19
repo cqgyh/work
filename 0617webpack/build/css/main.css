@@ -1,15 +1,1 @@
-body {
-  background-color: thistle;
-}
-
-.box {
-  width: 200px;
-  height: 200px;
-  background-color: violet;
-}
-.box .center {
-  width: 100px;
-  height: 100px;
-  background: url(/imgs/7205a.jpg);
-}
-
+body{background-color:thistle}.box{-webkit-animation:move 6s linear infinite;animation:move 6s linear infinite;background-color:violet;height:200px;width:200px}.box .center{background:url(/imgs/7205a.jpg);height:100px;width:100px}@-webkit-keyframes move{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes move{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}

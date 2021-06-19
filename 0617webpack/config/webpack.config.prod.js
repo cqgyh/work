@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 module.exports = {
     //入口路径配置 todo
     entry: './src/js/index.js',
@@ -11,8 +12,8 @@ module.exports = {
         publicPath: "/"
 
     },
-    //打包环境   开发环境编译成浏览器识别的语法 不压缩，生产环境编译成浏览器识别的语法 压缩 todo
-    mode: 'development',
+    //打包环境   开发环境编译成浏览器识别的语法 不压缩，生产环境编译成浏览器识别的语法 对JS压缩 todo
+    mode: 'production',
     //webpack只内置了js和json的loader
     //其他的loader的配置
     module: {
@@ -25,6 +26,21 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,//单独提取css文件
                     'css-loader', //将css文件以commonjs模块方案整合到到js中
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        'postcss-preset-env',
+                                        {
+                                            // 其他选项
+                                        },
+                                    ],
+                                ],
+                            },
+                        },
+                    },
                     {
                         loader: 'less-loader',
 
@@ -52,6 +68,18 @@ module.exports = {
                 test: /\.html$/i,
                 loader: 'html-loader',
             },
+            {
+                test: /\.js$/,
+                //排除node_modules不处理
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+
 
 
 
@@ -61,6 +89,20 @@ module.exports = {
     //插件配置 todo
     plugins: [new HtmlWebpackPlugin({
         template:'./src/index.html',//模版的路径 ,不加这个设置，只会生成再build下生成一个index.html，并且引入JS，但是body里没内容
+        minify: {
+            //去除空格
+            collapseWhitespace: true,
+            //去除注释
+            removeComments: true,
+            //移除默认属性
+            removeRedundantAttributes: true,
+            //移除script的type属性
+            removeScriptTypeAttributes: true,
+            //移除link的type属性
+            removeStyleLinkTypeAttributes: true,
+            //使用doctype
+            useShortDoctype: true
+        }
     }),new MiniCssExtractPlugin({
         filename: "css/[name].css"
     })],
@@ -80,6 +122,14 @@ module.exports = {
 
         compress: true, //启动gzip压缩
         quiet: true, //启动静默模式
+    },
+
+    optimization: {
+        minimizer: [
+            // 在 webpack@5 中，你可以使用 `...` 语法来扩展现有的 minimizer（即 `terser-webpack-plugin`），将下一行取消注释
+            // `...`,
+            new CssMinimizerPlugin(),
+        ],
     },
 
 

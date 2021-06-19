@@ -2,10 +2,19 @@
   width: 200px;
   height: 200px;
   background-color: violet;
+  animation: move 6s infinite linear;
 }
 .box .center {
   width: 100px;
   height: 100px;
   background: url("../img/1.jpg");
+}
+@keyframes move {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=test.css.map */

@@ -81,6 +81,7 @@ module.exports = {
         compress: true, //启动gzip压缩
         quiet: true, //启动静默模式
     },
+    devtool:'source-map',//将错误映射到源码，便于我们出错的时候修改src内的文件
 
 
 }
