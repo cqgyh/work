@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="btn1">get查询</button>
+<button class="btn2">post新增</button>
+<button class="btn3">put修改</button>
+<button class="btn4">delete删除</button>
+
+
+<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    // const axios = require("express/lib/request");
+    const btn1 = document.querySelector('.btn1');
+    const btn2 = document.querySelector('.btn2');
+    const btn3 = document.querySelector('.btn3');
+    const btn4 = document.querySelector('.btn4');
+    //查询
+    btn1.onclick = function () {
+        // axios.get('http://localhost:3000/posts?id=1')
+        // axios.get('http://localhost:3000/posts/1')
+        axios.get('http://localhost:3000/posts', {
+            params: {
+                id: 1,
+            }
+        })
+            .then((mes) => {
+                console.log(mes)
+            }).catch((err) => {
+            console.log(err)
+        });
+    }
+
+    //新增
+    btn2.onclick = function () {
+        axios.post('http://localhost:3000/posts', {
+                title: "json-server",
+                author: "typicode"
+        }
+        )
+            .then((mes) => {
+                console.log(mes)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }
+
+    //修改
+    btn3.onclick = function () {
+        axios.put('http://localhost:3000/posts/6', {
+           a:'b'
+        })
+            .then((mes) => {
+                console.log(mes)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }
+
+    //删除
+    btn4.onclick = function () {
+        axios.delete('http://localhost:3000/posts/5')
+            .then((mes) => {
+                console.log(mes)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }
+</script>
+</body>
+</html>
